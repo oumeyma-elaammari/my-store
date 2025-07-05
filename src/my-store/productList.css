@@ -50,11 +50,10 @@
 }
 
 .PRODUCT-TITLE {
-  margin: 10px 0;
+  margin: 2px 0;
   color: #333;
-  font-size: 18px;
+  font-size: 17px;
   height: 40px;
-  overflow: hidden;
 }
 
 .PRODUCT-PRICE {
