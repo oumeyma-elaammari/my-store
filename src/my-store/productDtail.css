@@ -21,8 +21,14 @@
 }
 
 .back-button:hover {
-  background-color: #5a040a;
+  background-color: #a30d1c;
+  transform: scale(1.02);
 }
+
+.back-button:active {
+  transform: scale(0.98);
+}
+
 
 .detail-container {
   display: flex;

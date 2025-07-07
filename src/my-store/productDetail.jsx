@@ -21,12 +21,10 @@ function ProductDetail() {
       <div className="detail-container">
          <div className="product-detail">
       <button onClick={() => navigate(-1)} className="back-button">
-        ← Back to Home
+        ←Back to Home
       </button>
         <div className="detail-images">
-          {product.images && product.images.length > 0 && product.images
-            .filter(img => typeof img === 'string' && img.startsWith('http'))
-            .map((img, index) => (
+          {product.images.map((img, index) => (
               <img 
                 key={index} 
                 src={img} 
