@@ -11,7 +11,6 @@ function ProductList() {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("access_token");
 
-  // 1. Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -27,7 +26,6 @@ function ProductList() {
     fetchProducts();
   }, []);
 
-  // 2. Fetch all categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -41,13 +39,19 @@ function ProductList() {
     fetchCategories();
   }, []);
 
-  // 3. Filtrage dynamique
   const filteredProducts = selectedCategory === "all"
     ? products
     : products.filter((p) => p.category?.id === selectedCategory);
 
   return ( <>
-     {isLoggedIn ? (
+   
+    
+    <div className='product-list'>
+      <div className='header'>
+         <h2 className='H2'>Welcome to MY-STORE :</h2>
+      <h3 className='H3'>Here you find our product list</h3>
+      <br/>
+        {isLoggedIn ? (
           <button
             className='BUTTON'
             onClick={() => {
@@ -62,13 +66,6 @@ function ProductList() {
             Log in
           </button>
         )}
-    
-    <div className='product-list'>
-      
-      <div className='header'>
-         <h2 className='H2'>Welcome to MY-STORE</h2>
-      <h3 className='H3'>Here you find our product list</h3>
-       
         </div>
       
 
