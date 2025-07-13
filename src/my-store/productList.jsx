@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './productList.css'; 
+import NavBar  from './navBar';
+import { useCart } from "./CartContext";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [search,setSearch]=useState("");
+  const { dispatch } = useCart();
 
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("access_token");
+  const isLoggedIn = sessionStorage.getItem("access_token");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,39 +43,24 @@ function ProductList() {
     fetchCategories();
   }, []);
 
-  const filteredProducts = selectedCategory === "all"
-    ? products
-    : products.filter((p) => p.category?.id === selectedCategory);
+  const filteredProducts = products
+  .filter((p) =>
+    selectedCategory === "all" || p.category?.id.toString() === selectedCategory.toString()
+  )
+  .filter((p) =>
+    p.title.toLowerCase().includes(search.toLowerCase())
+  );
+ 
 
   return ( <>
-   
-    
-    <div className='product-list'>
-      <div className='header'>
-         <h2 className='H2'>Welcome to MY-STORE :</h2>
-      <h3 className='H3'>Here you find our product list</h3>
-      <br/>
-        {isLoggedIn ? (
-          <button
-            className='BUTTON'
-            onClick={() => {
-              localStorage.removeItem("access_token");
-              navigate("/");
-            }}
-          >
-            Log out
-          </button>
-        ) : (
-          <button className='BUTTON' onClick={() => navigate("/login")}>
-            Log in
-          </button>
-        )}
-        </div>
-      
-
-      {}
-      <div className="category-table"> 
-        <span className='category-item'> Categories :</span>
+   <NavBar/>
+   <input className='search' 
+   value={search}
+   onChange={(e)=>setSearch(e.target.value)}
+   placeholder="Search by product name..."
+   />
+     <div className="category-table"> 
+        <span className='category-item'>  Categories :</span>
         <span
           className={`category-item ${selectedCategory === "all" ? "active" : ""}`}
           onClick={() => setSelectedCategory("all")}
@@ -88,8 +77,7 @@ function ProductList() {
           </span>
         ))}
       </div>
-
-      {}
+    <div className='product-list'>     
       {loading ? (
         <p>Loading products...</p>
       ) : filteredProducts.length === 0 ? (
@@ -100,13 +88,6 @@ function ProductList() {
             <div
               key={product.id}
               className='PRODUCT-CARD'
-              onClick={() => {
-                if (!isLoggedIn) {
-                  alert("You need to log in to view product details.");
-                  return;
-                }
-                navigate(`/productDetail/${product.id}`);
-              }}
             >
               <img
                 src={product.images?.[0] || 'https://via.placeholder.com/150'}
@@ -114,15 +95,35 @@ function ProductList() {
                 className='PRODUCT-IMAGE'
                 onError={(e) => {
                   e.target.src = 'https://via.placeholder.com/150';
+                  
                 }}
+                   onClick={() => {
+                if (!isLoggedIn) {
+                  alert("You need to log in to view product details.");
+                  return;
+                }
+                navigate(`/productDetail/${product.id}`);
+              }}
               />
               <h4 className='PRODUCT-TITLE'>{product.title}</h4>
-              <p className='PRODUCT-PRICE'>${product.price}</p>
+              <br/>
+               <p className='PRODUCT-PRICE'>${product.price}</p>
               <p className='PRODUCT-CATEGORY'>{product.category?.name || 'No Category'}</p>
+               <button className="button"    onClick={() => {
+                if (!isLoggedIn) {
+                  alert("You need to log in to shop products");
+                  return;
+                }
+              dispatch({ type: "ADD", product });
+             alert("product added to cart !");
+              }}> Add to cart </button>
             </div>
           ))}
         </div>
       )}
+    
+  
+    
     </div>
 </>
   );

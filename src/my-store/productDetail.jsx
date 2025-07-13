@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import './productDtail.css'; 
+import NavBar from './navBar';
+import { useCart } from "./CartContext";
+
 function ProductDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
+  //const navigate = useNavigate ();
+  const { dispatch } = useCart();
+
+
   console.log("ID récupéré depuis URL :", id);
 
 
@@ -15,14 +21,13 @@ function ProductDetail() {
       .catch((error) => console.log("error fetching product",error))
   }, [id]);
   if (!product) return <div>loading pruduct ... </div>; 
+ 
   return (
-   
-      
+   <>
+      <NavBar />
       <div className="detail-container">
          <div className="product-detail">
-      <button onClick={() => navigate(-1)} className="back-button">
-        ←Back to Home
-      </button>
+   
         <div className="detail-images">
           {product.images.map((img, index) => (
               <img 
@@ -42,9 +47,14 @@ function ProductDetail() {
           <p className="price">${product.price}</p>
           <p className="category">{product.category?.name || 'No category'}</p>
           <p className="description">{product.description}</p>
-        </div>
+          <button  className='button' onClick={() => {dispatch({ type: "ADD", product })     
+              alert("product added to cart !");}
+}>
+            Add to Cart
+          </button>        </div>
       </div>
     </div>
+  </>
   );
 }
 

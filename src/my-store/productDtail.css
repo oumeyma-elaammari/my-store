@@ -8,24 +8,24 @@
   padding: 20px;
 }
 
-.back-button {
+.button {
   background-color: #7a050e;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 7px;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 12px;
   transition: background-color 0.3s;
 }
 
-.back-button:hover {
+.button:hover {
   background-color: #a30d1c;
   transform: scale(1.02);
 }
 
-.back-button:active {
+.button:active {
   transform: scale(0.98);
 }
 

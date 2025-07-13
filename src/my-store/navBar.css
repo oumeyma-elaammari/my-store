@@ -1,0 +1,40 @@
+.navBar {
+  background: linear-gradient(
+    60deg,
+    #7a050e,
+    #000
+  );
+  height: 40px; 
+  display: flex;
+  justify-content: space-between;;
+  align-items: center; 
+  font-size: 1.2rem; 
+}
+
+.logo {
+font-size: 25px;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+.menu {
+  display: flex;
+  grid-template-columns: repeat(3,auto);
+  list-style: none;
+  justify-content: end;
+  margin: 20px;;
+  padding: 0;
+  align-items: center;
+}
+
+.menu li{ 
+font-size: 18px;
+justify-self: end;
+margin-right: 20px;
+cursor: pointer;
+color: #afafaf;
+font-weight: bold;
+
+}

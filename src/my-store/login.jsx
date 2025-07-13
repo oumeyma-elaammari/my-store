@@ -20,7 +20,7 @@ function Login() {
     });
    const data = await response.json();
    if(data.access_token) {
-      localStorage.setItem("access_token", data.access_token);
+      sessionStorage.setItem("access_token", data.access_token);
       navigate("/");
     }
   } catch (err) {
