@@ -1,60 +1,81 @@
 import React, { useEffect, useState } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './productDtail.css'; 
 import NavBar from './navBar';
 import { useCart } from "./CartContext";
+import { useWishlist } from './WishlistContext';
+import { useTranslation } from "react-i18next";
 
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  //const navigate = useNavigate ();
   const { dispatch } = useCart();
-
-
-  console.log("ID récupéré depuis URL :", id);
-
+  const { wishlist, dispatchWishlist } = useWishlist();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
-      .then((Response)=>Response.json())
+      .then((response) => response.json())
       .then((data) => setProduct(data))
-      .catch((error) => console.log("error fetching product",error))
+      .catch((error) => console.error("Error fetching product:", error));
   }, [id]);
-  if (!product) return <div>loading pruduct ... </div>; 
- 
+
+  if (!product) return <div>{t("productDetail.loading")}</div>;
+
+  const isInWishlist = wishlist.some(item => item.id === product.id);
+
   return (
-   <>
+    <>
       <NavBar />
       <div className="detail-container">
-         <div className="product-detail">
-   
-        <div className="detail-images">
-          {product.images.map((img, index) => (
-              <img 
-                key={index} 
-                src={img} 
-                alt={`${product.title} ${index + 1}`} 
+        <div className="product-detail">
+            <div className="product-image-container">
+          <div className="detail-images">
+            {(product.images || []).map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`${product.title} ${index + 1}`}
                 className="detail-image"
                 onError={(e) => {
                   e.target.src = 'https://via.placeholder.com/300';
                 }}
               />
             ))}
+          </div>
+
+          <span style={{ color: "#000"}}
+            className={`wishlist-heart ${isInWishlist ? 'active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatchWishlist({
+                type: isInWishlist ? "REMOVE" : "ADD",
+                product
+              });
+            }}
+          >
+            {isInWishlist ? "❤️" : "♡"}
+          </span>
+</div>
+          <div className="detail-info">
+            <h2 className='PRODUCT-TITLE'>{product.title}</h2>
+            <p className="price">${product.price}</p>
+            <p className="category">{product.category?.name || t("productDetail.noCategory")}</p>
+            <p className="description">{product.description}</p>
+            <button
+              className='button'
+              onClick={() => {
+                dispatch({ type: "ADD", product });
+                alert(t("productDetail.addedToCart"));
+              }}
+            >
+             {t("productDetail.addToCart")}
+            </button>
+          </div>
+          
         </div>
-        
-        <div className="detail-info">
-          <h2 className='PRODUCT-TITLE'>{product.title}</h2>
-          <p className="price">${product.price}</p>
-          <p className="category">{product.category?.name || 'No category'}</p>
-          <p className="description">{product.description}</p>
-          <button  className='button' onClick={() => {dispatch({ type: "ADD", product })     
-              alert("product added to cart !");}
-}>
-            Add to Cart
-          </button>        </div>
       </div>
-    </div>
-  </>
+    </>
   );
 }
 

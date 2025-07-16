@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './productList.css'; 
 import NavBar  from './navBar';
 import { useCart } from "./CartContext";
+import { useWishlist } from './WishlistContext';
+import { useTranslation } from "react-i18next";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -11,9 +13,10 @@ function ProductList() {
   const [loading, setLoading] = useState(true);
   const [search,setSearch]=useState("");
   const { dispatch } = useCart();
-
+  const { wishlist, dispatchWishlist } = useWishlist();
   const navigate = useNavigate();
   const isLoggedIn = sessionStorage.getItem("access_token");
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,22 +53,22 @@ function ProductList() {
   .filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
   );
- 
+
 
   return ( <>
    <NavBar/>
    <input className='search' 
    value={search}
    onChange={(e)=>setSearch(e.target.value)}
-   placeholder="Search by product name..."
+   placeholder={t("productList.searchByProductName")}
    />
      <div className="category-table"> 
-        <span className='category-item'>  Categories :</span>
+        <span className='category-item'>{t("productList.categories")}</span>
         <span
           className={`category-item ${selectedCategory === "all" ? "active" : ""}`}
           onClick={() => setSelectedCategory("all")}
         >
-          All
+         {t("productList.all")}
         </span>
         {categories.map((cat) => (
           <span
@@ -79,16 +82,17 @@ function ProductList() {
       </div>
     <div className='product-list'>     
       {loading ? (
-        <p>Loading products...</p>
+        <p>{t("productList.loadingProducts")}</p>
       ) : filteredProducts.length === 0 ? (
-        <p>No products available for this category.</p>
+        <p>{t("productList.noProductsAvailableForThisCategory")}</p>
       ) : (
         <div className='products-container'>
           {filteredProducts.map((product) => (
             <div
               key={product.id}
               className='PRODUCT-CARD'
-            >
+            > 
+            <div className="product-image-container">
               <img
                 src={product.images?.[0] || 'https://via.placeholder.com/150'}
                 alt={product.title}
@@ -99,24 +103,46 @@ function ProductList() {
                 }}
                    onClick={() => {
                 if (!isLoggedIn) {
-                  alert("You need to log in to view product details.");
+                  alert(t("productList.loginDetails"));
                   return;
                 }
                 navigate(`/productDetail/${product.id}`);
               }}
               />
+                <span style={{ color: "#000"}}
+    className={`wishlist-heart ${wishlist.some(item => item.id === product.id) ? 'active' : ''}`}
+    onClick={(e) => {
+      e.stopPropagation();
+      if (!isLoggedIn) {
+        alert(t("productList.loginWishlist"));
+        return;
+      }
+      if (wishlist.some(item => item.id === product.id)) {
+        dispatchWishlist({ type: "REMOVE", product });
+      } else {
+        dispatchWishlist({ type: "ADD", product });
+      }
+    }}
+  >
+{wishlist.some(item => item.id === product.id) ? ("❤️") :"♡" }
+  </span>
+
+</div>
+              
+                    
+          
               <h4 className='PRODUCT-TITLE'>{product.title}</h4>
               <br/>
                <p className='PRODUCT-PRICE'>${product.price}</p>
-              <p className='PRODUCT-CATEGORY'>{product.category?.name || 'No Category'}</p>
+              <p className='PRODUCT-CATEGORY'>{product.category?.name || t("productList.noCategory")}</p>
                <button className="button"    onClick={() => {
                 if (!isLoggedIn) {
-                  alert("You need to log in to shop products");
+                  alert(t("productList.loginShop"));
                   return;
                 }
               dispatch({ type: "ADD", product });
-             alert("product added to cart !");
-              }}> Add to cart </button>
+             alert(t("productList.productAdded"));
+              }}>{t("productList.addToCart")} </button>
             </div>
           ))}
         </div>

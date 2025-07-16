@@ -45,3 +45,29 @@ height: 200px;
 border-radius: 10px;
 margin: 20px;
  }
+
+ .product-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.wishlist-heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 2;
+  color: #aaa;
+  user-select: none;
+}
+
+
+
+.wishlist-heart:hover {
+  transform: scale(1.2);
+}
+
+
