@@ -1,0 +1,71 @@
+{
+    "cart" : {
+        "empty" :"سلة التسوق فارغة",
+        "title" :"سلة التسوق الخاصة بك",
+        "remove" : "إزالة",
+        "total" :"المجموع",
+        "clear" : "إفراغ السلة",
+        "client_info": "المعولامات الخاصة ",
+        "name_placeholder": "الاسم الكامل",
+        "email_placeholder": "البريد الإلكتروني",
+        "submit": "تأكيد الطلب",
+        "sending": "جاري الإرسال..."
+
+    },
+
+   "login" : {
+        "title":"تسجيل الدخول",
+        "email" : "البريد الإلكتروني",
+        "password":"كلمة المرور",
+        "button": "تسجيل الدخول",
+        "noAccount":"ليس لديك حساب ؟",
+        "registerHere":"يرجى التسجيل من هنا"
+    },
+
+    "navBar" :{
+        "home":"الصفحة الرئيسية",
+        "logout":"تسجيل الخروج",
+        "login":"تسجيل الدخول"
+    },
+
+
+
+  "productDetail": {
+    "loading": "جاري تحميل المنتج...",
+    "noCategory": "لا توجد فئة",
+    "addToCart": "إضافة إلى سلة التسوق",
+    "addedToCart": "تمت إضافة المنتج إلى السلة "
+  },
+
+  
+  "productList": {
+    "searchByProductName": "ابحث باسم المنتج",
+    "categories": "الفئات",
+    "all": "الكل",
+    "loadingProducts": "جاري تحميل المنتجات...",
+    "noProductsAvailableForThisCategory": "لا توجد منتجات لهذه الفئة",
+    "loginDetails": "يرجى تسجيل الدخول لعرض تفاصيل المنتج",
+    "loginWishlist": "يرجى تسجيل الدخول لإدارة قائمة الرغبات",
+    "noCategory": "لا توجد فئة",
+    "loginShop": "يرجى تسجيل الدخول للشراء",
+    "productAdded": "تمت إضافة المنتج إلى السلة!",
+    "addToCart": "إضافة إلى سلة التسوق"
+  },
+
+    "register": {
+    "registerToAccessMyStore": "My-Store قم بالتسجيل للولوج إلى ",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "avatarURL": "رابط الصورة الرمزية",
+    "button": "تسجيل"
+  },
+
+   "wishlist": {
+    "title": "قائمة الرغبات الخاصة بك",
+    "empty": "قائمة الرغبات فارغة",
+    "add": "أضف إلى السلة",
+    "productAdded": "تمت إضافة المنتج إلى السلة!"
+  }
+
+}

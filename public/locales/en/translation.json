@@ -1,0 +1,68 @@
+{
+    "cart" : {
+        "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "remove": "Remove",
+    "clear": "Clear cart",
+    "total": "Total",
+    "client_info": "Customer Information",
+    "name_placeholder": "Full name",
+    "email_placeholder": "Email",
+    "submit": "Confirm order",
+    "sending": "Sending..."
+    },
+
+   "login" : {
+        "title":"Login to access My Store",
+        "email" : "Email",
+        "password":"Password",
+        "button": "Login",
+        "noAccount":"Don't have an account ?",
+        "registerHere":"Register here"
+    },
+
+      "productDetail": {
+    "loading": "Loading product...",
+    "noCategory": "No category",
+    "addToCart": "Add to Cart",
+    "addedToCart": "Product added to cart!"
+  },
+
+  
+  "productList": {
+    "searchByProductName": "Search by product name",
+    "categories": "Categories",
+    "all": "All",
+    "loadingProducts": "Loading products...",
+    "noProductsAvailableForThisCategory": "No products available for this category",
+    "loginDetails": "Please log in to view product details",
+    "loginWishlist": "Please log in to manage your wishlist",
+    "noCategory": "No category",
+    "loginShop": "Please log in to shop",
+    "productAdded": "Product added to cart!",
+    "addToCart": "Add to Cart"
+  },
+
+  "register": {
+    "registerToAccessMyStore": "Register to access My Store",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "avatarURL": "Avatar URL",
+    "button": "Register"
+  },
+ 
+    "wishlist": {
+    "title": "Your Wishlist",
+    "empty": "Your Wishlist is empty",
+    "add": "Add to Cart",
+    "productAdded": "Product added to cart!"
+  },
+
+    "navBar": {
+    "home": "Home",
+    "login": "Login",
+    "logout": "Logout"
+  }
+
+}

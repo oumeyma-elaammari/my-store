@@ -1,0 +1,66 @@
+{
+    "cart" : {
+          "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "remove": "Supprimer",
+    "clear": "Vider le panier",
+    "total": "Total",
+    "client_info": "Informations client",
+    "name_placeholder": "Nom complet",
+    "email_placeholder": "Email",
+    "submit": "Valider la commande",
+    "sending": "Envoi en cours..."
+    },
+
+      "login" : {
+        "title":"Se connecter pour accéder à My-Store",
+        "email" : "Email",
+        "password":"Mot de passe",
+        "button": "Se connecter",
+        "noAccount":"Vous n'avez pas de compte ?",
+        "registerHere": "Inscrivez-vous ici"
+    },
+
+    "productDetail": {
+    "loading": "Chargement du produit...",
+    "noCategory": "Aucune catégorie",
+    "addToCart": "Ajouter au panier",
+    "addedToCart": "Produit ajouté au panier !"
+  },
+
+  "productList": {
+    "searchByProductName": "Rechercher par nom de produit",
+    "categories": "Catégories",
+    "all": "Tous",
+    "loadingProducts": "Chargement des produits...",
+    "noProductsAvailableForThisCategory": "Aucun produit disponible pour cette catégorie",
+    "loginDetails": "Veuillez vous connecter pour voir les détails du produit",
+    "loginWishlist": "Veuillez vous connecter pour gérer votre liste de souhaits",
+    "noCategory": "Aucune catégorie",
+    "loginShop": "Veuillez vous connecter pour acheter",
+    "productAdded": "Produit ajouté au panier !",
+    "addToCart": "Ajouter au panier"
+  },
+
+ "register": {
+    "registerToAccessMyStore": "Inscrivez-vous pour accéder à My Store",
+    "name": "Nom",
+    "email": "Email",
+    "password": "Mot de passe",
+    "avatarURL": "URL de l'avatar",
+    "button": "S'inscrire"
+  },
+
+   "wishlist": {
+    "title": "Votre liste de souhaits",
+    "empty": "Votre liste de souhaits est vide",
+    "add": "Ajouter au panier",
+    "productAdded": "Produit ajouté au panier !"
+  },
+  "navBar": {
+    "home": "Accueil",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  }
+
+}

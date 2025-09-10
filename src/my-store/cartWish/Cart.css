@@ -1,0 +1,122 @@
+
+
+.h2 {
+ font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;      
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+ .button {
+  background-color: #7a050e;
+  color: white;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin:10px;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+ .button:hover {
+  background-color: #a30d1c;
+  transform: scale(1.02);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+ .img{
+width: 20Opx;
+height: 200px;
+border-radius: 10px;
+margin: 20px;
+ }
+
+ .product-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.wishlist-heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 2;
+  color: #aaa;
+  user-select: none;
+}
+
+
+
+.wishlist-heart:hover {
+  transform: scale(1.2);
+}
+
+
+.client-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.client-form {
+  padding: 25px 30px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.client-form h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #7a050e;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.client-form .input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+.client-form .input:focus {
+  border-color: #7a050e;
+  outline: none;
+  box-shadow: 0 0 4px rgba(122, 5, 14, 0.2);
+}
+
+.client-form .button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
